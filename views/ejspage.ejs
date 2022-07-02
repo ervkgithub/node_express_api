@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('common/header') %>
+    <div>
+        <h4>Title Title EJS</h4>
+         <p>Lorem ipsum EJS</p>
+    </div>
+    <div>
+        <h4>Title Title EJS</h4>
+         <p>Lorem ipsum EJS</p>
+    </div>
+    <div>
+        <h4>Title Title EJS</h4>
+         <p>Lorem ipsum EJS</p>
+    </div>
+    <div>
+        Name: <%= data.name %>
+    </div>
+    <div>
+        City: <%= data.city %>
+    </div>
+    <div>
+        Pincode: <%= data.pincode %>
+    </div>
+
+    <% if(data.pincode === 1234567) { %>
+     <p>Pin code service avalable</p>
+    <% } %>    
+
+</body>
+</html>
