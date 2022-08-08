@@ -1,28 +1,23 @@
 {
-  "name": "node_express_api",
+  "name": "express_cetpa_ecommerce",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express - NodeJS Framework",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ervkgithub/node_express_api.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ervkgithub/node_express_api/issues"
-  },
-  "homepage": "https://github.com/ervkgithub/node_express_api#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.0",
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.16"
   }
 }

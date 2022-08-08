@@ -45,6 +45,9 @@ app.use('/products', productsRoute);
 const usersRoute = require('./routes/users');
 app.use('/users', usersRoute);
 
+const ordersRoute = require('./routes/orders');
+app.use('/orders', ordersRoute);
+
 
 const path = require('path');
 const { hostname } = require('os');
@@ -72,9 +75,11 @@ app.get('/ejspage1', (req, res) => {
     res.render('ejspage1', {data});
 })
 
-mongoose.connect('mongodb+srv://testuser001:z9xsFuktzYAs4fMk@cluster0.2eq41.mongodb.net/ecommerce?retryWrites=true&w=majority', {useNewUrlParser: true}, () => {
+
+mongoose.connect('mongodb+srv://w3sweb:bzYIvEWShQ829LVh@cluster0.lzsdt7s.mongodb.net/ecommerce?retryWrites=true&w=majority', {useNewUrlParser: true}, () => {
     console.log('MongoDB Atlas connected...')
 })
+
 // hostname, databasename, username, password
 
 app.listen(4000);

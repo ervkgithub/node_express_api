@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container">
+
+
+            <%- include('common/header')   %>
+
+
+            <div class="row">
+                <div class="col-12 bg-info">
+                    <h2>My First Bootsrap Express Website Page.</h2>
+                    <div>My Name is  <%= data.name %>       </div>
+                    <div>My Name is  <%= data.city %>       </div>
+                    <div>My Name is  <%= data.pincode %>       </div>
+
+
+                    <%        if(data.pincode === 223123)   {  %>
+                        <h3>PinCode service available</h3>
+                    <% } %>
+
+
+                </div>
+            </div>
+            </div>
+
+
+    </body>
+</html>

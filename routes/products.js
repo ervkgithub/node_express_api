@@ -6,6 +6,7 @@ const router = express.Router();
 var colors = require('colors');
 
 //get api for all search
+//http://localhost:8000/products
 router.get('/', async (req, res) => {
     console.log('inside get api call.')
     try{
@@ -33,15 +34,28 @@ router.get('/searchProduct', async (req, res) => {
     catch(err){
         res.status(400).json({message: err.message});
     }
-    
+})
+
+//get api for search with category
+router.get('/category/:category', async (req, res) => {
+    try{
+        // console.log('------------abcsearchProduct - ', req.params.category);
+        let tempCategory = req.params.category;
+        const productslist = await Products.find({category: tempCategory});
+        // console.log(productslist);
+        res.status(201).json(productslist);
+    }
+    catch(err){
+        res.status(400).json({message: err.message});
+    }
 })
 
 //get api for search with id
 router.get('/:id', async (req, res) => {
     try{
-        console.log(req.params.id);
+        console.log('inside details api - ', req.params.id);
         let tempId = req.params.id;
-        const productslist = await Products.find({productid: tempId});
+        const productslist = await Products.findOne({productid: tempId});
         console.log(productslist);
         res.status(201).json(productslist);
     }
@@ -63,14 +77,15 @@ router.post('/', async (req, res) => {
 
     try{
         const product = new Products({
-            productid: req.body.productid,
-            productname: req.body.productname,
+            id: req.body.id,
+            productid: req.body.id,
+            title: req.body.title,
             price: req.body.price,
             description: req.body.description,
             image: req.body.image,
             category: req.body.category
-            // productid: 'test123',
-            // productname: 'test product 123',
+            // id: 'test123',
+            // title: 'test product 123',
             // price: 1000
         })
         console.log(product);
@@ -114,7 +129,7 @@ router.delete('/:id', async (req, res) => {
     try{
         console.log(req.params.id);
         const tempId = req.params.id;
-        const response = await Products.deleteOne({productid: tempId});
+        const response = await Products.deleteOne({id: tempId});
         res.status(201).json(response);
     }
     catch(err) {
@@ -123,17 +138,21 @@ router.delete('/:id', async (req, res) => {
 })
 
 
-router.put('/updatePrice', async (req, res) => {
+router.put('/updatePrice/:id', async (req, res) => {
     try{
         console.log(req.body);
-        // const productslistOne = await Products.findOne({productid: req.body.productid});
+        const tempId = req.params.id;
+        // const productslistOne = await Products.findOne({id: req.body.id});
         // console.log(productslistOne);
-        const tempProduct = new Products({
-            productid: 'id1234',
-            productname: 'name new',
-            price: 5000
-        })
-        const response = await Products.findOneAndUpdate({productid: 'id123'}, tempProduct, {new: true} );
+        const tempProduct = {
+            id: req.body.id,
+            title: req.body.title,
+            price: req.body.price,
+            description: req.body.description,
+            image: req.body.image,
+            category: req.body.category
+        }
+        const response = await Products.findOneAndUpdate({id: tempId}, tempProduct, {new: true} );
         res.status(201).json(response);
     }
     catch(err) {
